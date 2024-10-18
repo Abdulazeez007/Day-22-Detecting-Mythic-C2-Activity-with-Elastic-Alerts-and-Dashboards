@@ -1,7 +1,5 @@
 # Day-22-Detecting-Mythic-C2-Activity-with-Elastic-Alerts-and-Dashboards
 
-# Detecting Mythic C2 Activity: Creating Alerts and Dashboards in Elastic
-
 In today’s task, we’ll be diving into how to detect Mythic C2 activity in Elastic by setting up custom alerts and creating a powerful dashboard to visualize potential threats. Specifically, we’ll be focusing on the activity we generated yesterday and how to monitor it using Elastic’s robust detection and visualization tools.
 
 Let’s jump right in!
