@@ -12,16 +12,16 @@ The first thing we need is an alert that flags Mythic C2 activity based on our g
 
 1. Click on the hamburger icon (menu) in the top left corner and select “Discover” from the list.
 2. Refresh all fields to get updated logs.
-3. In the search bar, type your generated process name: `svchost-pheonixrocks.exe` (or your specific file name). This will retrieve logs related to that process.
+3. In the search bar, type your generated process name: `svchost-aurorarocks.exe` (or your specific file name). This will retrieve logs related to that process.
 
 ### Filter Logs by Event Code 1
 
-1. Once you select the `svchost-pheonixrocks.exe` log, you’ll notice Event Code 11.
+1. Once you select the `svchost-aurorarocks.exe` log, you’ll notice Event Code 11.
 2. We want to focus on Event Code 1 (which logs process creation). Process creation events are critical, as they can contain important indicators like the MD5 hash of the executable.
 3. Update your query:
    
 ```bash
-svchost-pheonixrocks.exe and event.code: 1
+svchost-aurorarocks.exe and event.code: 1
 ```
 
 ### Investigating Hashes
@@ -38,7 +38,7 @@ Now, let’s create a detection rule to flag any future process creations tied t
 Our goal is to trigger an alert whenever this specific file (in our case, `Apollo.exe`) is executed. Use the following query to capture both the hash and the original file name:
 
 ```bash
-svchost-pheonixrocks.exe and event.code: 1 and (winlog.event_data.Hashes: A1F75C696553C3E1F887BD0D8B312CDA6D4D57BA8DD587AB59DF2A694A3642AB or winlog.event_data.OriginalFileName: Apollo.exe)
+svchost-aurorarocks.exe and event.code: 1 and (winlog.event_data.Hashes: A1F75C696553C3E1F887BD0D8B312CDA6D4D57BA8DD587AB59DF2A694A3642AB or winlog.event_data.OriginalFileName: Apollo.exe)
 ```
 
 
@@ -52,7 +52,7 @@ svchost-pheonixrocks.exe and event.code: 1 and (winlog.event_data.Hashes: A1F75C
    - `winlog.event_data.Image`
    - `winlog.event_data.CommandLine`
    - `winlog.event_data.CurrentDirectory`
-3. Name your rule something meaningful, like `Pheonix-Mythic-C2-Apollo-Agent-Detected`.
+3. Name your rule something meaningful, like `aurora-Mythic-C2-Apollo-Agent-Detected`.
 4. Set the rule to run every 5 minutes.
 5. For severity, set it to Critical.
 6. Click **Create & Enable Rule** to finalize it.
