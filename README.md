@@ -14,6 +14,8 @@ The first thing we need is an alert that flags Mythic C2 activity based on our g
 2. Refresh all fields to get updated logs.
 3. In the search bar, type your generated process name: `svchost-auroradefender.exe` (or your specific file name). This will retrieve logs related to that process.
 
+![Alt text](https://raw.githubusercontent.com/Virus192/Day-22-Detecting-Mythic-C2-Activity-with-Elastic-Alerts-and-Dashboards/refs/heads/main/Images/photo_6019550752046957234_w.jpg)
+
 ### Filter Logs by Event Code 1
 
 1. Once you select the `svchost-auroradefender.exe` log, you’ll notice Event Code 11.
@@ -57,6 +59,8 @@ svchost-auroradefender.exe and event.code: 1 and (winlog.event_data.Hashes: A1F7
 5. For severity, set it to Critical.
 6. Click **Create & Enable Rule** to finalize it.
 
+![Alt text](https://raw.githubusercontent.com/Virus192/Day-22-Detecting-Mythic-C2-Activity-with-Elastic-Alerts-and-Dashboards/refs/heads/main/Images/photo_6019550752046957236_w.jpg)
+
 ## Step 3: Building the Mythic C2 Dashboard
 
 With alerts set up, it’s time to create a dashboard that gives us an at-a-glance view of suspicious activities. Dashboards in Elastic are great for visualizing event data in real-time.
@@ -84,6 +88,8 @@ event.code: 1 and event.provider: Microsoft-Windows-Sysmon and (powershell or cm
 - `winlog.event_data.CommandLine`
 - `winlog.event_data.CurrentDirectory`
 
+![Alt text](https://raw.githubusercontent.com/Virus192/Day-22-Detecting-Mythic-C2-Activity-with-Elastic-Alerts-and-Dashboards/refs/heads/main/Images/photo_6019550752046957230_w1.jpg)
+
 ### Event ID 3: Network Connections (Outbound)
 
 Track any outbound network connections initiated by a process.
@@ -99,6 +105,8 @@ event.code: 3 and event.provider: Microsoft-Windows-Sysmon and winlog.event_data
 - `winlog.event_data.SourceIp`
 - `winlog.event_data.DestinationIp`
 - `winlog.event_data.DestinationPort`
+  
+![Alt text](https://raw.githubusercontent.com/Virus192/Day-22-Detecting-Mythic-C2-Activity-with-Elastic-Alerts-and-Dashboards/refs/heads/main/Images/photo_6019550752046957230_w2.jpg)
 
 ### Event ID 5001: Windows Defender Disabled
 
